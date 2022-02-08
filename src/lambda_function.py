@@ -24,7 +24,8 @@ def lambda_handler(event, context):
     api = tweepy.API(auth)
     name = "TheDarKnightBot"
     id = api.get_user(screen_name=name)
-    tweet = tweets[id.statuses_count]
+    tweet = tweets[id.statuses_count] + \
+        " (" + str(id.statuses_count+1) + "/3027) "
     print(tweet)
     api.update_status(tweet)
     return {"statusCode": 200, "tweet": tweet}
